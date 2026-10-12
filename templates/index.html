@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScribeGuard - Grammar & Writing Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="navbar">
+            <div class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M12 20h9"></path>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+                <span class="brand-title">Scribe<strong>Guard</strong></span>
+                <span class="badge-pro">PRO ENGINE</span>
+            </div>
+            <div class="nav-actions">
+                <button id="btn-sample" class="btn-ghost">Load Sample</button>
+                <button id="btn-fix-all" class="btn-primary" disabled>Auto-Fix All</button>
+            </div>
+        </header>
+
+        <main class="workspace">
+            <section class="editor-pane card">
+                <div class="editor-toolbar">
+                    <span class="toolbar-label">INPUT TEXT</span>
+                    <div class="toolbar-stats">
+                        <span id="stat-words">0 words</span>
+                        <span class="divider">•</span>
+                        <span id="stat-chars">0 characters</span>
+                    </div>
+                </div>
+                <div class="editor-wrapper">
+                    <div id="backdrop" class="backdrop"></div>
+                    <textarea id="editor" placeholder="Type or paste your text here to inspect grammar, spelling, clarity, and tone..."></textarea>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <div class="card metrics-card">
+                    <h3 class="card-title">Readability & Score</h3>
+                    <div class="score-grid">
+                        <div class="score-box">
+                            <span class="score-value" id="metric-ease">100</span>
+                            <span class="score-name">Reading Ease</span>
+                        </div>
+                        <div class="score-box">
+                            <span class="score-value" id="metric-grade">0.0</span>
+                            <span class="score-name">Grade Level</span>
+                        </div>
+                    </div>
+                    <div class="level-banner">
+                        <span class="level-label">Audience:</span>
+                        <span class="level-badge" id="metric-level">Very Easy</span>
+                    </div>
+                </div>
+
+                <div class="card issues-card">
+                    <div class="card-header-flex">
+                        <h3 class="card-title">Suggestions (<span id="issues-count">0</span>)</h3>
+                        <select id="filter-category" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="grammar">Grammar</option>
+                            <option value="spelling">Spelling</option>
+                            <option value="style">Style</option>
+                            <option value="punctuation">Punctuation</option>
+                            <option value="wordiness">Wordiness</option>
+                        </select>
+                    </div>
+                    <div id="issues-list" class="issues-list">
+                        <div class="empty-state">
+                            <p>No issues detected. Your text is clean!</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
